@@ -636,15 +636,28 @@
             document.getElementById('yourPosts').textContent = frequency;
             document.getElementById('yourViews').textContent = views.toLocaleString();
 
-            // TODO: Send email to your backend/webhook
-            console.log('Lead captured:', email, { platform, frequency, views, currentMonthlyReach, gapPercent });
-            
-            // You can add a fetch() call here to send to your email service
-            // fetch('YOUR_WEBHOOK_URL', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify({ email, platform, frequency, views, currentMonthlyReach, gapPercent })
-            // });
+            // Send to Beehiiv via serverless function
+            fetch('/api/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    email, 
+                    platform, 
+                    frequency, 
+                    views, 
+                    currentReach: currentMonthlyReach, 
+                    gapPercent 
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Subscribed to Beehiiv:', email);
+                } else {
+                    console.error('Subscription error:', data.error);
+                }
+            })
+            .catch(err => console.error('Network error:', err));
         }
 
         function animateNumber(elementId, start, end, duration) {
