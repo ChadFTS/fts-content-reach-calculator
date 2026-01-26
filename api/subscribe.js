@@ -30,7 +30,7 @@ export default async function handler(req, res) {
                     utm_source: 'content_reach_calculator',
                     utm_medium: 'website',
                     custom_fields: [
-                        { name: 'platform', value: platform || '' },
+                        { name: 'coresocial', value: platform || '' },
                         { name: 'posting_frequency', value: String(frequency) || '' },
                         { name: 'avg_views', value: String(views) || '' },
                         { name: 'current_reach', value: String(currentReach) || '' },
