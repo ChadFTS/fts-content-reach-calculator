@@ -609,7 +609,7 @@
 
             // Calculate
             const currentMonthlyReach = frequency * views;
-            const gapPercent = Math.round((1 - (currentMonthlyReach / FTS_MONTHLY_REACH)) * 100);
+            const gapPercent = ((1 - (currentMonthlyReach / FTS_MONTHLY_REACH)) * 100).toFixed(2);
 
             // Pick spicy quote based on situation
             let quoteCategory = 'general';
