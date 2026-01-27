@@ -138,7 +138,7 @@ These fields are captured from the calculator and sent to Beehiiv:
 
 | Field Name | Description | Example |
 |------------|-------------|---------|
-| `platform` | Main platform they use | linkedin |
+| `coresocial` | Main platform they use | linkedin |
 | `posting_frequency` | Posts per month | 4 |
 | `avg_views` | Average views per post | 200 |
 | `current_reach` | Calculated monthly reach | 800 |
